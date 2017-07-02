@@ -12,8 +12,11 @@
               <th>Description</th>
             </tr>
           </thead>
+          <tr *ngFor='let project of projects'>
+            <td class="width30">{{project.name}}</td>
+            <td class="width70">{{project.description}}</td>
+          </tr>
           <tbody>
-            
           </tbody>
         </table>
       </div>

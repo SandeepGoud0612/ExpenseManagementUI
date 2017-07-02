@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.width30 {
+    width: 30%;
+}
+
+.width70 {
+    width: 70%;
+}

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,12 +11,14 @@ import { ExpenseComponent } from './expense/expense.component';
 import { BillComponent } from './bill/bill.component';
 import { PayerComponent } from './payer/payer.component';
 import { ReceiverComponent } from './receiver/receiver.component';
+import { ProjectService } from './project/project.service';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
   declarations: [
     AppComponent,
@@ -24,9 +27,9 @@ import { ReceiverComponent } from './receiver/receiver.component';
     ExpenseComponent,
     BillComponent,
     PayerComponent,
-    ReceiverComponent    
+    ReceiverComponent
   ],
-  providers: [],
+  providers: [ProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
