@@ -32,30 +32,52 @@
         <div class="card-header bg-success text-white">
           Create Project
           <button type="button" class="btn btn-link btn-sm float-right fa fa-times text-white" (click)="cancelCreateProject()"> Cancel</button>
-          <button type="submit" class="btn btn-link btn-sm float-right fa fa-check text-white" (click)="createProjectSubmit()"> Save</button>
+          <button type="submit" class="btn btn-link btn-sm float-right fa fa-check text-white" (click)="createProjectSubmit()" [disabled]="!projectCreateForm.form.valid"> Save</button>
+        </div>
+        <div class="card-block">
+          <div class="row">
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="projectNameCreate">Name<span class="text-danger"> *</span></label>
+                <input type="text" class="form-control" id="projectNameCreate" name="projectNameCreate" #projectNameCreate="ngModel" [(ngModel)]="projectNew.name"
+                  maxlength="50" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required />
+                <div *ngIf="projectNameCreate.errors && (projectNameCreate.dirty || projectNameCreate.touched)" class="alert alert-danger">
+                  <div [hidden]="!projectNameCreate.errors.required">
+                    Project name is required
+                  </div>
+                  <div [hidden]="!projectNameCreate.errors.maxlength">
+                    Max Character Lenght is 50
+                  </div>
+                  <div [hidden]="!projectNameCreate.dirty || projectNameCreate.errors.required">
+                    Invalid project name
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="projectDescriptionCreate">Description<span class="text-danger"> *</span></label>
+                <input type="text" class="form-control" id="projectDescriptionCreate" name="projectDescriptionCreate" #projectDescriptionCreate="ngModel"
+                  [(ngModel)]="projectNew.description" maxlength="100" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required/>
+                <div *ngIf="projectDescriptionCreate.errors && (projectDescriptionCreate.dirty || projectDescriptionCreate.touched)" class="alert alert-danger">
+                  <div [hidden]="!projectDescriptionCreate.errors.required">
+                    Project description is required
+                  </div>
+                  <div [hidden]="!projectDescriptionCreate.errors.maxlength">
+                    Max Character Lenght is 50
+                  </div>
+                  <div [hidden]="!projectDescriptionCreate.dirty || projectDescriptionCreate.errors.required">
+                    Invalid project description
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </form>
-    </div>
-    <div class="card-block">
-      <div class="row">
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="projectNameCreate">Name</label>
-            <input type="text" class="form-control" id="projectNameCreate" name="projectNameCreate" #projectNameCreate="ngModel" [(ngModel)]="projectNew.name"
-            />
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="projectDescriptionCreate">Description</label>
-            <input type="text" class="form-control" id="projectDescriptionCreate" name="projectDescriptionCreate" #projectDescriptionCreate="ngModel"
-              [(ngModel)]="projectNew.description" />
-          </div>
-        </div>
-
-      </div>
     </div>
   </div>
 </div>
