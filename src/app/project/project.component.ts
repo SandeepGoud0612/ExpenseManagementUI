@@ -13,6 +13,8 @@ export class ProjectComponent implements OnInit {
 
   createProject: Boolean;
 
+  updateProject: Boolean;
+
   projectNew: Project;
 
   constructor(private projectService: ProjectService) { }

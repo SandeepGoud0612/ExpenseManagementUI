@@ -11,11 +11,15 @@
             <tr>
               <th>Name</th>
               <th>Description</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tr *ngFor='let project of projects'>
             <td class="width30">{{project.name}}</td>
             <td class="width70">{{project.description}}</td>
+            <td class="width10"><button type="button" class="btn btn-link fa fa-pencil text-success" aria-hidden="true"> Update</button></td>
+            <td class="width10"><button type="button" class="btn btn-link fa fa-trash text-danger" aria-hidden="true" data-toggle="modal"> Delete</button></td>
           </tr>
           <tbody>
           </tbody>
