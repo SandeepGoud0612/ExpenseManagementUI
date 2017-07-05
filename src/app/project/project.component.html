@@ -1,8 +1,9 @@
-<div class="row">
+<div class="row" *ngIf="!this.createProject">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header bg-success text-white">
         Project List
+        <button type="button" class="btn btn-link btn-sm fa fa-plus float-right text-white" (click)="createProjectClick()"> Create</button>
       </div>
       <div class="card-block">
         <table class="table table-bordered table-hover">
@@ -19,6 +20,41 @@
           <tbody>
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="createProject">
+  <div class="col-md-12">
+    <div class="card">
+      <form #projectCreateForm="ngForm">
+        <div class="card-header bg-success text-white">
+          Create Project
+          <button type="button" class="btn btn-link btn-sm float-right fa fa-times text-white" (click)="cancelCreateProject()"> Cancel</button>
+          <button type="submit" class="btn btn-link btn-sm float-right fa fa-check text-white" (click)="createProjectSubmit()"> Save</button>
+        </div>
+      </form>
+    </div>
+    <div class="card-block">
+      <div class="row">
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="projectNameCreate">Name</label>
+            <input type="text" class="form-control" id="projectNameCreate" name="projectNameCreate" #projectNameCreate="ngModel" [(ngModel)]="projectNew.name"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="projectDescriptionCreate">Description</label>
+            <input type="text" class="form-control" id="projectDescriptionCreate" name="projectDescriptionCreate" #projectDescriptionCreate="ngModel"
+              [(ngModel)]="projectNew.description" />
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

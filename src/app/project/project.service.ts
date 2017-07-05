@@ -16,7 +16,14 @@ export class ProjectService {
   getAllProjects(): Observable<Project[]> {
     return this.http.get(this.projectUri)
       .map((response: Response) => response.json())
-      .catch(this.handleError);;
+      .catch(this.handleError);
+  }
+
+  createProject(newProject: Project): Observable<Project> {
+    alert('hi 123');
+    return this.http.post(this.projectUri, JSON.stringify(newProject), { headers: this.headers })
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
   }
 
   private handleError(error: any) {
